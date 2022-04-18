@@ -2,7 +2,7 @@
 "                                  PlugList                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call plug#begin('D:\developer_tools\Neovim\share\nvim\plugged') 
+call plug#begin('~/.vim/plugged') 
 "状态栏的例子
 Plug 'morhetz/gruvbox'
 " Plug 'iCyMind/NeoSolarized'
