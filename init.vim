@@ -4,10 +4,11 @@
 
 call plug#begin('~/.vim/plugged') 
 "状态栏的例子
-Plug 'morhetz/gruvbox'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+"Plug 'morhetz/gruvbox'
 " Plug 'iCyMind/NeoSolarized'
 " Plug 'bling/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline'
@@ -31,7 +32,17 @@ call plug#end()
 set termguicolors
 " colorscheme NeoSolarized
 " Plug 'morhetz/gruvbox'
-colorscheme gruvbox
+
+syntax on
+colorscheme onehalflight
+"let g:airline_theme='onehalfdark'
+" lightline
+let g:lightline = { 'colorscheme': 'onehalflight' }
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " 彩虹括号
 " Plug 'luochen1990/rainbow'
@@ -42,6 +53,23 @@ let g:rainbow_active = 1
 let g:indentLine_color_term = 238
 
 " 状态栏增强
+# 把这几句配置加到函数外面任意地方：
+" @airline
+set t_Co=256      "在windows中用xshell连接打开vim可以显示色彩
+let g:airline#extensions#tabline#enabled = 1   " 是否打开tabline
+"这个是安装字体后 必须设置此项" 
+let g:airline_powerline_fonts = 1
+set laststatus=2  "永远显示状态栏
+"let g:airline_theme='bubblegum' "选择主题
+"let g:airline_theme='molokai'  " murmur配色不错
+let g:airline#extensions#tabline#left_sep = ' '  "separater
+let g:airline#extensions#tabline#left_alt_sep = '|'  "separater
+let g:airline#extensions#tabline#formatter = 'default'  "formater
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '◀'
+let g:airline_left_alt_sep = '❯'
+let g:airline_right_alt_sep = '❮'
+
 " Plug 'vim-airline/vim-airline'
 " 打开后可以美化显示窗口 tab 和 buffer，比 NeoVim 自带好看
 let g:airline#extensions#tabline#enabled = 1
@@ -49,21 +77,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 
-if !exists('g:airline_symbols')
-let g:airline_symbols = {}
-endif
-let g:airline_left_sep = '▶'
-let g:airline_left_alt_sep = '❯'
-let g:airline_right_sep = '◀'
-let g:airline_right_alt_sep = '❮'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-
-
-"关于状态栏的小配置
-"Powerline setting
-let g:airline_powerline_fonts = 1  " 支持 powerline 字体
-"let g:airline_theme='molokai'  " murmur配色不错
 
 
 
@@ -121,7 +134,7 @@ set number  "显示绝对行号
 set rnu  "显示相对行号
 set nowrap    "不自动折行
 set showmatch   " 光标遇到圆括号、方括号、大括号时，自动高亮对应的另一半
-set cc=80 "标尺线
+"set cc=80 "标尺线
 set scrolloff=5        "垂直滚动时，光标距离顶部/底部的行数
 " 搜索
 set hlsearch        " 搜索时，高亮显示匹配结果
@@ -130,7 +143,10 @@ set foldcolumn=0            " 设置折叠区域的宽度
 setlocal foldlevel=1        " 设置折叠层数为
 set foldlevelstart=99       " 打开文件是默认不折叠代码
 
-set guifont=DejaVu\ Sans\ Mono:h20   " 设置字体和字体大小
+"set guifont=DejaVu\ Sans\ Mono:h20   " 设置字体和字体大小
+"set guifont=Cascadia\ Mono:h20   " 设置字体和字体大小
+"set guifont=SauceCodePro\ NF:h20   " 设置字体和字体大小
+set guifont=Monaco:h20   " 设置字体和字体大小
 
 
 " 快捷键
