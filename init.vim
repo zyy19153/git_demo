@@ -2,7 +2,7 @@
 "                                  PlugList                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call plug#begin('~/.vim/plugged') 
+call plug#begin('D:\developer_tools\Neovim\share\nvim\plugged') 
 "状态栏的例子
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 "Plug 'morhetz/gruvbox'
@@ -20,6 +20,8 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "极限搜索文件
 Plug 'junegunn/fzf.vim'
 "Plug 'windwp/nvim-autopairs'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ryanoasis/vim-devicons' "配合 nerd font 使用的图标 load it as the very last one
 call plug#end()
 
 
@@ -35,6 +37,7 @@ set termguicolors
 
 syntax on
 colorscheme onehalflight
+"colorscheme onehalfdark
 "let g:airline_theme='onehalfdark'
 " lightline
 let g:lightline = { 'colorscheme': 'onehalflight' }
@@ -53,7 +56,7 @@ let g:rainbow_active = 1
 let g:indentLine_color_term = 238
 
 " 状态栏增强
-# 把这几句配置加到函数外面任意地方：
+" 把这几句配置加到函数外面任意地方：
 " @airline
 set t_Co=256      "在windows中用xshell连接打开vim可以显示色彩
 let g:airline#extensions#tabline#enabled = 1   " 是否打开tabline
@@ -75,9 +78,6 @@ let g:airline_right_alt_sep = '❮'
 let g:airline#extensions#tabline#enabled = 1
 " tabline 中 buffer 显示编号
 let g:airline#extensions#tabline#buffer_nr_show = 1
-
-
-
 
 
 " 树形文件浏览
@@ -113,7 +113,14 @@ inoremap ` <Esc>
 nnoremap <S-Enter> o<Esc>
 noremap Y y$
 noremap ; :
-
+noremap <C-h> H
+noremap <C-j> 10j
+noremap <C-k> 10k
+noremap <C-l> L
+inoremap <C-h> <left>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-l> <right>
 
 set mouse=nv " 可视模式
 
@@ -135,7 +142,7 @@ set rnu  "显示相对行号
 set nowrap    "不自动折行
 set showmatch   " 光标遇到圆括号、方括号、大括号时，自动高亮对应的另一半
 "set cc=80 "标尺线
-set scrolloff=5        "垂直滚动时，光标距离顶部/底部的行数
+"set scrolloff=5        "垂直滚动时，光标距离顶部/底部的行数
 " 搜索
 set hlsearch        " 搜索时，高亮显示匹配结果
 set foldmethod=indent  " 代码折叠
@@ -145,8 +152,8 @@ set foldlevelstart=99       " 打开文件是默认不折叠代码
 
 "set guifont=DejaVu\ Sans\ Mono:h20   " 设置字体和字体大小
 "set guifont=Cascadia\ Mono:h20   " 设置字体和字体大小
-"set guifont=SauceCodePro\ NF:h20   " 设置字体和字体大小
-set guifont=Monaco:h20   " 设置字体和字体大小
+set guifont=SauceCodePro\ NF:h20   " 设置字体和字体大小
+"set guifont=Monaco:h20   " 设置字体和字体大小
 
 
 " 快捷键
